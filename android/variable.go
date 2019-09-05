@@ -19,6 +19,8 @@ import (
 	"reflect"
 	"runtime"
 	"strings"
+	
+	"beast/soong/android"
 
 	"github.com/google/blueprint/proptools"
 )
@@ -124,6 +126,9 @@ type variableProperties struct {
 			Static_libs  []string
 			Srcs         []string
 		}
+		
+		// include Beast variables
+		Beast android.Product_variables
 	} `android:"arch_variant"`
 }
 
@@ -287,6 +292,8 @@ type productVariables struct {
 	ProductHiddenAPIStubsTest   []string `json:",omitempty"`
 
 	TargetFSConfigGen []string `json:",omitempty"`
+	
+	Beast android.ProductVariables
 }
 
 func boolPtr(v bool) *bool {
